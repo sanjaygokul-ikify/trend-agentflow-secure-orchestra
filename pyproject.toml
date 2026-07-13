@@ -1,0 +1,20 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.builder"
+
+[tool.poetry]
+name = "agentflow-secure-orchestra"
+version = "0.1.0"
+description = "Distributed multi-agent orchestration framework"
+authors = ["Your Org <email@example.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.95.0"
+pydantic = "^1.10.4"
+aiohttp = "^3.8.3"
+
+[tool.poetry.dev-dependencies]
+typing_extensions = "^4.4.0"
+pytest = "^7.3.1"
