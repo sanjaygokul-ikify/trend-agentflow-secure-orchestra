@@ -35,6 +35,9 @@ class Engine:
         except Exception as e:
             self.agent_states[agent_id] = AgentState.FAILED
             return ExecutionResult(None, str(e))
+        finally:
+            if self.executor:
+                self.executor.execute_agent(agent_id, input_data)
 
     def get_agent_state(self, agent_id: str) -> AgentState:
         return self.agent_states.get(agent_id, AgentState.UNKNOWN)
