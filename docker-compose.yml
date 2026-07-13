@@ -1,0 +1,19 @@
+services:
+  api:
+    build: ./api
+    ports:
+      - "8000:8000"
+    environment:
+      - ENCLAVE_ENABLED=true
+      - LOG_LEVEL=debug
+    volumes:
+      - ./state:/app/state
+  executor:
+    build: ./executor
+    deploy:
+      replicas: 3
+    environment:
+      - MAX_AGENT_MEMORY=512Mi
+      - GVISOR_RUNTIME=true
+    depends_on:
+      - api
