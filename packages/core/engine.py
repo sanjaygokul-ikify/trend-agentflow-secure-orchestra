@@ -46,6 +46,12 @@ class Engine:
         for agent_id in self.agents:
             self.agent_states[agent_id] = AgentState.TERMINATED
 
+    def execute_agent(self, agent_id: str, input_data: Any) -> ExecutionResult:
+        if self.executor:
+            return self.executor.execute_agent(agent_id, input_data)
+        else:
+            return self.run_agent(agent_id, input_data)
+
 class ExecutionResult:
     def __init__(self, result: Any, error: str):
         self.result = result
@@ -56,4 +62,3 @@ class ExecutionResult:
             return f'Error: {self.error}'
         else:
             return str(self.result)
-
